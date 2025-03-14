@@ -12,6 +12,8 @@ const schema = buildSchema(`
     type Query {
       hello (name: String): String
       age (birthday: String): Int
+      isAdmin: Boolean
+      interests: [String]
     }
   `)
 
@@ -22,7 +24,9 @@ const rootValue = {
   age: (args) => {
     const currentAge = getAge(args.birthday)
     return currentAge
-  }
+  },
+  isAdmin: true,
+  interests: ['music', 'camping', 'motorcycles']
 }
 
 app.listen(PORT, () => {
