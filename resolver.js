@@ -1,15 +1,15 @@
 import { getAge } from './utils.js'
 
-const rootValue = {
-  hello: (args) => {
-    return `hello ${args.name || 'world'}!`
+const resolver = {
+  hello: ({ name }) => {
+    return `hello ${name || 'world'}!`
   },
-  age: (args) => {
-    const currentAge = getAge(args.birthday)
+  age: ({ birthday }) => {
+    const currentAge = getAge(birthday)
     return currentAge
   },
   isAdmin: true,
   interests: ['music', 'camping', 'motorcycles']
 }
 
-export default rootValue
+export default resolver
