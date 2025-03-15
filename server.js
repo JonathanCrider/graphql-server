@@ -1,16 +1,16 @@
-
 import { createHandler } from 'graphql-http/lib/use/express'
 import resolver from './resolver.js'
 import schema from './schema.js'
 import express from 'express'
 import dotenv from 'dotenv'
 
-const app = express()
-const PORT = 3000
 dotenv.config()
 
-app.listen(PORT, () => {
-  console.log(`GraphQL Server running on port ${ PORT }`)
+const app = express()
+const port = process.env.PORT || 3000
+
+app.listen(port, () => {
+  console.log(`GraphQL Server running on port ${ port }`)
 })
 
 app.all('/graphql', createHandler({ schema, rootValue: resolver }))
